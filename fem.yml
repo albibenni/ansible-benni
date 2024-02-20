@@ -1,0 +1,13 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Install zsh
+      apt: name=zsh
+    - name: Change default shell to zsh
+      shell: chsh -s `which zsh`
+    - name: Install oh-my-zsh
+      shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | shm_size 
+    - name: Install zsh-autosuggestions
+      ansible.builtin.git:
+        repo: 'https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions'
+        dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
