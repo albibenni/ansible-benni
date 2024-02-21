@@ -11,3 +11,10 @@
       ansible.builtin.git:
         repo: 'https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions'
         dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+    - name: Update cache
+      apt:
+        name: ['nodejs', 'npm']
+    - name: Install n
+      npm: name=n
+    - name: Install nodejs 20.0.0 with n
+      shell: n 20
