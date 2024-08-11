@@ -17,3 +17,4 @@
     #- include: tasks/node.yml
     #- include: tasks/vs-code.yml
     #- include: tasks/slack-setup.yml
+    - include: tasks/dotfile.yml
