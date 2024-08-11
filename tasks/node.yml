@@ -1,0 +1,5 @@
+- name: Install pnpm
+  shell: sh -c "$(wget -qO- https://get.pnpm.io/install.sh | sh -)"
+  tags:
+    - install
+    - node

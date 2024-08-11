@@ -5,10 +5,12 @@
       apt:
         update_cache: yes
       tags:
-      - nodejs
+        #- node
       # run nodejs tags
       - zsh
       # run zsh tags
   tasks:
-    - include: fem-tasks/zsh.yml
-    - include: fem-tasks/node.yml
+    #
+    - include: tasks/zsh.yml
+    #- include: tasks/node.yml
+    #- include: tasks/node.yml
