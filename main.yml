@@ -1,16 +1,18 @@
 - hosts: localhost
-  become: true
+  vars:
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
   pre_tasks:
     - name: Update cache
+      become: true
       apt:
+        force_apt_get: true
         update_cache: yes
+        state: present
       tags:
-        #- node
-      # run nodejs tags
-      - zsh
-      # run zsh tags
+        - install
   tasks:
-    #
-    - include: tasks/zsh.yml
+    #- include: tasks/zsh.yml
     #- include: tasks/node.yml
     #- include: tasks/node.yml
+    - include: tasks/vs-code.yml

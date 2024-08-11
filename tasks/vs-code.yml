@@ -1,0 +1,23 @@
+- name: required libraries for Vscode and others
+  become: true
+  apt:
+    name: ["curl", "apt-transport-https"]
+  tags:
+    - install
+    - vscode
+
+- name: Vscode
+  get_url:
+    url: https://vscode.download.prss.microsoft.com/dbazure/download/stable/89de5a8d4d6205e5b11647eb6a74844ca23d2573/code_1.90.0-1717531825_amd64.deb
+    dest: ./vscode.deb
+  tags:
+    - install
+    - vscode
+
+- name: Vscode install deb package
+  become: true
+  apt:
+    name: ./vscode.deb
+  tags:
+    - vscode
+    - install
