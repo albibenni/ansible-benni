@@ -15,4 +15,5 @@
     #- include: tasks/zsh.yml
     #- include: tasks/node.yml
     #- include: tasks/node.yml
-    - include: tasks/vs-code.yml
+    #- include: tasks/vs-code.yml
+    #- include: tasks/slack-setup.yml
