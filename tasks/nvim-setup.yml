@@ -1,0 +1,25 @@
+- name: Remove neovim
+  shell: rm -rf ~/neovim
+  tags:
+    - install
+    - neovim
+
+- name: Install neovim
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+  tags:
+    - install
+    - neovim
+
+- name: Neovim luarocks
+  become: true
+  apt: name=luarocks
+  tags:
+    - install
+    - neovim
+- name: Neovim luacheck
+  become: true
+  shell: luarocks install luacheck
+  tags:
+    - install
+    - neovim

@@ -16,10 +16,12 @@
       tags:
         - install
   tasks:
-    #- include: tasks/ssh.yml
-    - import_tasks: tasks/vs-code.yml
-    #- include: tasks/git.yml
-    #- include: tasks/zsh.yml
-    #- include: tasks/node.yml
+    #- import_tasks: tasks/ssh.yml
+    #- import_tasks: tasks/vs-code.yml
+    #- import_tasks: tasks/chrome.yml
+    #- import_tasks: tasks/brave.yml
+    #- import_tasks: tasks/zsh.yml
+    #- import_tasks: tasks/git.yml
+    - include: tasks/node.yml
     #- include: tasks/slack-setup.yml
     #- include: tasks/dotfile.yml
