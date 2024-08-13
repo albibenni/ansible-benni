@@ -1,24 +1,34 @@
-- name: Vscode
-  get_url:
-    url: https://vscode.download.prss.microsoft.com/dbazure/download/stable/89de5a8d4d6205e5b11647eb6a74844ca23d2573/code_1.90.0-1717531825_amd64.deb
-    dest: /tmp/vscode.deb
-  tags:
-    - install
-    - vscode
-
-- name: Remove Any previous slacks
+- name: required libraries for vscode
   become: true
   apt:
-    name: slack-desktop
-    state: absent
+    name: ["curl", "apt-transport-https", "gpg", "wget"]
   tags:
+    - code
     - install
-    - vscode
+- name: code archive-keyring.gpg download
+  shell: wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+  tags:
+    - code
+    - install
 
-- name: Vscode install .deb package
+- name: install gpg
+  shell: install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+  tags:
+    - code
+    - install
+
+- name: code PPA setting
+  become: true
+  shell: echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | tee /etc/apt/sources.list.d/vscode.list > /dev/null
+  tags:
+    - code
+    - install
+
+- name: code apt installation
   become: true
   apt:
-    name: /tmp/vscode.deb
+    update_cache: yes
+    name: code
   tags:
+    - code
     - install
-    - vscode
