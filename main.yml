@@ -1,20 +1,25 @@
 - hosts: localhost
   vars:
+    key_work: "missoun_git"
+    source_key: "./.ssh/id_rsa"
+    source_key_work: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    dest_key_work: "{{ lookup('env', 'HOME') }}/.ssh/missoun_git"
     personal: "{{ lookup('env', 'HOME') }}/personal"
   pre_tasks:
     - name: Update cache
       become: true
       apt:
         force_apt_get: true
-        update_cache: yes
+        update_cache: true
         state: present
       tags:
         - install
   tasks:
+    #- include: tasks/ssh.yml
+    - import_tasks: tasks/vs-code.yml
+    #- include: tasks/git.yml
     #- include: tasks/zsh.yml
     #- include: tasks/node.yml
-    #- include: tasks/node.yml
-    #- include: tasks/vs-code.yml
     #- include: tasks/slack-setup.yml
-    - include: tasks/dotfile.yml
+    #- include: tasks/dotfile.yml
