@@ -2,7 +2,18 @@
   become: true
   apt:
     name: [wget, libappindicator3-1, libgbm1, libindicator3-7, libu2f-udev]
+
 - name: Chrome Download
   get_url:
     url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    dest:
+    dest: /tmp/chrome.deb
+  tags:
+    - install
+    - chrome
+
+- name: install chrome
+  apt:
+    deb: ./google.deb
+  tags:
+    - install
+    - chrome
