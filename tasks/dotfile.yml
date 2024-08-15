@@ -9,7 +9,6 @@
     repo: 'git@github.com:albibenni/.dotfiles.git'
     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
     recursive: yes
-    accept_hostkey: yes
     update: yes
     version: main
   tags:
