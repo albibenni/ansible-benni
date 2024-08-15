@@ -16,14 +16,17 @@
       tags:
         - install
   tasks:
-    #    - import_tasks: tasks/ssh.yml
-    #    - import_tasks: tasks/vs-code.yml
-    #    - import_tasks: tasks/chrome.yml
-    #    - import_tasks: tasks/brave.yml
-    #    - import_tasks: tasks/zsh.yml
-    #    - import_tasks: tasks/git.yml
-    #    - import_tasks: tasks/node.yml
-    #    - import_tasks: tasks/slack-setup.yml
-    #    - import_tasks: tasks/npm-packages.yml
-    #    - import_tasks: tasks/dotfile.yml
-      - import_tasks: tasks/nvim-setup.yml
+    - import_tasks: tasks/ssh.yml
+    - import_tasks: tasks/prod-tools.yml
+    - import_tasks: tasks/core.yml
+    - import_tasks: tasks/vs-code.yml
+    - import_tasks: tasks/docker.yml
+    - import_tasks: tasks/chrome.yml
+    - import_tasks: tasks/brave.yml
+    - import_tasks: tasks/zsh.yml
+    - import_tasks: tasks/git.yml
+    - import_tasks: tasks/node.yml
+    - import_tasks: tasks/slack-setup.yml
+    - import_tasks: tasks/npm-packages.yml
+    - import_tasks: tasks/dotfile.yml
+    - import_tasks: tasks/nvim-setup.yml
