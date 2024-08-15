@@ -13,7 +13,7 @@
 
 - name: install chrome
   apt:
-    deb: ./google.deb
+    deb: /tmp/google.deb
   tags:
     - install
     - chrome
