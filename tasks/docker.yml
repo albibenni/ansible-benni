@@ -1,0 +1,14 @@
+- name: Docker Download
+  get_url:
+    url: https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64
+    dest: /tmp/docker.deb
+  tags:
+    - install
+    - docker
+
+- name: install chrome
+  apt:
+    deb: /tmp/docker.deb
+  tags:
+    - install
+    - docker
