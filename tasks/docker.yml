@@ -1,14 +1,30 @@
+- name: required libraries for docker
+  become: true
+  apt:
+    name: ["curl", "ca-certificates", "curl", "gnupg", "lsb-release"]
+  tags:
+    - docker
+    - install
+
 - name: Docker Download
   get_url:
-    url: https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64
-    dest: /tmp/docker.deb
+    url: https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    dest: /usr/share/keyrings/docker.gpg
   tags:
     - install
     - docker
 
-- name: install chrome
+- name: Docker ppa setting
+  become: true
+  shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+  tags:
+    - install
+    - docker
+
+- name: docker apt installation
   apt:
-    deb: /tmp/docker.deb
+    update_cache: yes
+    name: docker-desktop-amd64.deb
   tags:
     - install
     - docker
