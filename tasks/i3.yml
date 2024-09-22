@@ -1,7 +1,7 @@
 - name: Install I3 and required
   become: true
   apt:
-    name: [ "i3", "dconf-editor", "polybar", "dmenu", "rofi"]
+    name: [ "i3", "dconf-editor", "polybar", "dmenu", "rofi", "feh"]
   tags:
     - i3
     - install
