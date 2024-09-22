@@ -1,0 +1,8 @@
+- name: Install I3 and required
+  become: true
+  apt:
+    name: [ "i3", "dconf-editor", "polybar", "dmenu", "rofi"]
+  tags:
+    - i3
+    - install
+    - core
